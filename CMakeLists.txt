@@ -21,6 +21,7 @@
 # -DTF_BUILD_EXAMPLES=OFF/ON          // default ON
 # -DTF_BUILD_PROFILER=OFF/ON          // default OFF
 # -DTF_BUILD_TESTS=OFF/ON             // default ON
+# -DTF_BUILD_SANDBOX=OFF/ON           // default OFF
 # -------------------------------------------------------------------
 
 
@@ -43,6 +44,7 @@ option(TF_BUILD_CUDA "Enables builds of cuda code" OFF)
 option(TF_BUILD_TESTS "Enables builds of tests" ON)
 option(TF_BUILD_EXAMPLES "Enables builds of examples" ON)
 option(TF_BUILD_MODULES "Enables C++ modules" OFF)
+option(TF_BUILD_SANDBOX "Enables builds of sandbox demos" OFF)
 
 # feature options
 option(TF_ENABLE_TASK_PRIORITY "Enables task priority scheduling" OFF)
@@ -350,6 +352,14 @@ endif(TF_BUILD_PROFILER)
 if(TF_BUILD_BENCHMARKS)
   add_subdirectory(benchmarks)
 endif(TF_BUILD_BENCHMARKS)
+
+# -----------------------------------------------------------------------------
+# Sandbox (scratch demos for exploring taskflow; not part of the library)
+# -----------------------------------------------------------------------------
+
+if(TF_BUILD_SANDBOX)
+  add_subdirectory(sandbox/priority_demo)
+endif(TF_BUILD_SANDBOX)
 
 # -----------------------------------------------------------------------------
 # create find_package(Taskflow CONFIG)
