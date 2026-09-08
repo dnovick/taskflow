@@ -21,7 +21,7 @@
 # -DTF_BUILD_EXAMPLES=OFF/ON          // default ON
 # -DTF_BUILD_PROFILER=OFF/ON          // default OFF
 # -DTF_BUILD_TESTS=OFF/ON             // default ON
-# -DTF_BUILD_SANDBOX=OFF/ON           // default OFF
+# -DTF_BUILD_DAVIDN=OFF/ON            // default OFF
 # -------------------------------------------------------------------
 
 
@@ -44,7 +44,7 @@ option(TF_BUILD_CUDA "Enables builds of cuda code" OFF)
 option(TF_BUILD_TESTS "Enables builds of tests" ON)
 option(TF_BUILD_EXAMPLES "Enables builds of examples" ON)
 option(TF_BUILD_MODULES "Enables C++ modules" OFF)
-option(TF_BUILD_SANDBOX "Enables builds of sandbox demos" OFF)
+option(TF_BUILD_DAVIDN "Enables builds of personal exploration demos under davidn/" OFF)
 
 # feature options
 option(TF_ENABLE_TASK_PRIORITY "Enables task priority scheduling" OFF)
@@ -354,12 +354,13 @@ if(TF_BUILD_BENCHMARKS)
 endif(TF_BUILD_BENCHMARKS)
 
 # -----------------------------------------------------------------------------
-# Sandbox (scratch demos for exploring taskflow; not part of the library)
+# davidn's personal exploration demos (kept out of sandbox/ and examples/ so
+# as not to mix with upstream content; not part of the library)
 # -----------------------------------------------------------------------------
 
-if(TF_BUILD_SANDBOX)
-  add_subdirectory(sandbox/priority_demo)
-endif(TF_BUILD_SANDBOX)
+if(TF_BUILD_DAVIDN)
+  add_subdirectory(davidn/priority_demo)
+endif(TF_BUILD_DAVIDN)
 
 # -----------------------------------------------------------------------------
 # create find_package(Taskflow CONFIG)
