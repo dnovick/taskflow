@@ -361,6 +361,7 @@ endif(TF_BUILD_BENCHMARKS)
 
 if(TF_BUILD_DAVIDN)
   add_subdirectory(davidn/priority_demo)
+  add_subdirectory(davidn/tutorial)
 endif(TF_BUILD_DAVIDN)
 
 # -----------------------------------------------------------------------------
