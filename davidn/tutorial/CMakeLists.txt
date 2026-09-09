@@ -1,19 +1,20 @@
 # -----------------------------------------------------------------------------
 # Taskflow tutorial demos and exercises (davidn's personal learning project).
 #
-# Each entry becomes its own executable target -- e.g. as CLion Run/Debug
-# configurations -- so every lesson stays independently runnable/debuggable.
-# Add a new lesson by appending its base name (without .cpp) to this list.
+# Each *_demo.cpp / *_exercise.cpp file becomes its own executable target
+# -- e.g. as CLion Run/Debug configurations -- so every lesson stays
+# independently runnable/debuggable. Just drop a new lessonN_demo.cpp or
+# lessonN_exercise.cpp file in this directory; CONFIGURE_DEPENDS makes CMake
+# automatically pick it up and re-run configure on the next build.
 # -----------------------------------------------------------------------------
 
-list(APPEND TF_DAVIDN_TUTORIAL
-  lesson1_demo
-  lesson1_exercise
-  lesson2_demo
-  lesson2_exercise
+file(GLOB TF_DAVIDN_TUTORIAL_SOURCES CONFIGURE_DEPENDS
+  ${CMAKE_CURRENT_SOURCE_DIR}/*_demo.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/*_exercise.cpp
 )
 
-foreach(tutorial_source IN LISTS TF_DAVIDN_TUTORIAL)
-  add_executable(${tutorial_source} ${tutorial_source}.cpp)
+foreach(tutorial_source_path IN LISTS TF_DAVIDN_TUTORIAL_SOURCES)
+  get_filename_component(tutorial_source ${tutorial_source_path} NAME_WE)
+  add_executable(${tutorial_source} ${tutorial_source_path})
   target_link_libraries(${tutorial_source} ${PROJECT_NAME} Threads::Threads tf::default_settings)
 endforeach()
