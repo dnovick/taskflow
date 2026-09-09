@@ -45,7 +45,8 @@ namespace tf {
 */
 template <typename T>
 struct IsPod : std::integral_constant<bool, std::is_standard_layout<T>::value &&
-                                            std::is_trivial<T>::value> {};
+                                            std::is_trivially_copyable<T>::value &&
+                                            std::is_trivially_default_constructible<T>::value> {};
 
 /**
 @private

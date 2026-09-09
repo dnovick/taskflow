@@ -1,11 +1,11 @@
 // Demonstrates tf::TaskPriority scheduling.
 //
 // Build with priority scheduling enabled:
-//   clang++ -std=c++20 -I ../.. -pthread -DTF_ENABLE_TASK_PRIORITY \
+//   clang++ -std=c++26 -I ../.. -pthread -DTF_ENABLE_TASK_PRIORITY \
 //     priority_demo.cpp -o priority_demo_on
 //
 // Build with priority scheduling disabled (priority calls become no-ops):
-//   clang++ -std=c++20 -I ../.. -pthread priority_demo.cpp -o priority_demo_off
+//   clang++ -std=c++26 -I ../.. -pthread priority_demo.cpp -o priority_demo_off
 //
 // Root tasks with no predecessors are dispatched from a shared, non-priority
 // buffer (they're launched by the calling thread, not a worker), so priority
